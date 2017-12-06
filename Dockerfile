@@ -22,5 +22,6 @@ EXPOSE 5900
 ENV NAME melanoma_jsy 
 
 # Run Melanoma_Flask.py when the container launches
-# CMD ["python" , "Melanoma_Flask.py"]
+# RUN cd bme590_melanoma_detection
+CMD ["python" , "mains.py"]
 
