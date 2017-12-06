@@ -2,15 +2,25 @@ import numpy as np
 import json
 import tensorflow as tf
 import base64
-# suyash's code:
-# import get_prediction as gp
+#from pymodm import connect
+#from pymodm import MongoModel, fields
+#suyash's code:
+#from get_prediction import get_prediction
 
+patient_counter = 0
 
 from flask import Flask, request, jsonify
+#connect("mongodb://vm_url:port/melanoma_db")
 app = Flask(__name__)
 
 #    pip install Flask
 #    $ FLASK_APP = hello.py flask run
+
+# class User(MongoModel):
+#     patient_id = fields.Integer()
+#     p_malignant = fields.FloatField()
+#     p_benign = fields.FloatField()
+#     malignant_flag = fields.Integer() ....flag ==1 if p_mal > p_ben
 
 @app.route("/CloudMelanomaData", methods=['POST'])
 def melanoma_results():
@@ -38,6 +48,16 @@ def melanoma_results():
     probability_dict = {"likelihood": predictions.tolist()}
 
     results_content = jsonify([label_dict], [probability_dict])
+
+    # if predictions[0]>predictions[1]:
+    #   flag = 1
+    #else:
+    #   flag = 0
+    # global patient_counter
+    # patient_counter = patient_counter + 1
+    # new_p = User(patient_id = patient_counter, p_malignant=predictions[0], p_benign=predictions[1],
+    # malignant_flag = flag)
+    # new_p.save()
 
     return results_content
 
