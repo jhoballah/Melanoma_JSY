@@ -13,8 +13,6 @@ from flask import Flask, request, jsonify
 #connect("mongodb://vm_url:port/melanoma_db")
 app = Flask(__name__)
 
-#    pip install Flask
-#    $ FLASK_APP = hello.py flask run
 
 # class User(MongoModel):
 #     patient_id = fields.Integer()
