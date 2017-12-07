@@ -24,4 +24,5 @@ ENV NAME melanoma_jsy
 # Run Melanoma_Flask.py when the container launches
 # RUN cd bme590_melanoma_detection
 CMD ["python" , "image_send_flask.py"]
+#CMD ["python" , "mains.py"] 
 

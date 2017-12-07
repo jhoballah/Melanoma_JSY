@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route("/CloudMelanomaData_testing", methods=['POST'])
+@app.route('/jawad')
 def image_send():
 
     #should be image converted to base 64
@@ -32,7 +32,7 @@ def image_send():
 
     return img_send_test
 
+    #return 'ugly xmas sweaters'
+
 if __name__=="__main__":
-	app.run(port="5900",host="0.0.0.0") 
-
-
+	app.run(port="5900",host="0.0.0.0")
