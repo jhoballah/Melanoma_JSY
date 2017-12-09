@@ -43,7 +43,7 @@ def image_send():
 
     # msg = msg[msg.find(b"<plain_txt_msg:img>") + len(b"<plain_txt_msg:img>"):
     # msg.find(b"<!plain_txt_msg>")]
-    msg = base64.b64decode(image_b64_data[0].encode('utf-8')[2:-1])
+    msg = base64.decodebytes(image_b64_data[0])
     buf = io.BytesIO(msg)
     img = np.asarray(Image.open(buf).convert('L'))
     #image = []
