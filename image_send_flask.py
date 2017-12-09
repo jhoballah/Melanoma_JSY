@@ -45,7 +45,7 @@ def image_send():
     # msg.find(b"<!plain_txt_msg>")]
     msg = base64.b64decode(image_b64_data[0])
     buf = io.BytesIO(msg)
-    img = Image.open(buf)
+    img = np.asarray(Image.open(buf).convert('L'))
     # return img
 
     (label, prediction) = get_prediction(img)
