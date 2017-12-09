@@ -7,6 +7,7 @@ MAINTAINER Sonali Shah <ss842@duke.edu>
 # Set the working directory to /app
 WORKDIR /app
 Add . /app
+Add ./bme590_melanoma_detection /app
 
 # cd into current folder 
 # RUN git clone https://github.com/jhoballah/Melanoma_JSY.git  
