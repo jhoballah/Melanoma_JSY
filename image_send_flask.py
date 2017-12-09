@@ -29,11 +29,15 @@ def image_send():
 
     img = base64.b64decode(image_b64_data[0])
 
+    """
+
     filename="testfile.jpg"
     with open(filename, 'wb') as f:
         f.write(img)
 
     # return img
+
+    """
 
     (label, prediction) = get_prediction(img)
 
