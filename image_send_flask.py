@@ -14,9 +14,9 @@ app = Flask(__name__)
 @app.route('/jawad', methods=['POST'])
 def image_send():
 
+
     #should be image converted to base 64
     j_dict = request.json
-
 
     """    try:
         j_dict = json.dumps(j_dict)
