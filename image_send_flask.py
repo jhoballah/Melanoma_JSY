@@ -43,14 +43,14 @@ def image_send():
 
     # msg = msg[msg.find(b"<plain_txt_msg:img>") + len(b"<plain_txt_msg:img>"):
     # msg.find(b"<!plain_txt_msg>")]
-    msg = base64.decodebytes(image_b64_data[0])
-    buf = io.BytesIO(msg)
-    img = np.asarray(Image.open(buf).convert('L'))
+    msg = base64.b64decode(image_b64_data[0])
+    #buf = io.BytesIO(msg)
+    #img = np.asarray(Image.open(buf).convert('L'))
     #image = []
     #img1 = img[np.newaxis,:,:]
     #image.append[img1]
     # return img
-    image = np.array(buf)
+    image = np.array(Image.open(msg))
     #image = np.array(image)
 
     (label, prediction) = get_prediction(image)
