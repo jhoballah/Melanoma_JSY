@@ -6,4 +6,4 @@ scipy
 pytest
 pytest-pep8
 ipython
-
+matplotlib
