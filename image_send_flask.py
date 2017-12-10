@@ -50,14 +50,14 @@ def image_send():
     #img1 = img[np.newaxis,:,:]
     #image.append[img1]
     # return img
-    image = np.array(Image.open(buf))
-    im_data = im_data.reshape((im_data.shape[0], im_data.shape[1], im_data.shape[2], 1))
+    im_data = np.array(Image.open(buf))
+    #im_data = im_data.reshape((im_data.shape[0], im_data.shape[1], im_data.shape[2], 1))
     #image = np.array(image)
 
     (label, prediction) = get_prediction(im_data)
 
-    label_dict = {"diagnosis": label.tolist()}
-    probability_dict = {"likelihood": prediction.tolist()} 
+    label_dict = {"diagnosis": label}
+    probability_dict = {"likelihood": prediction}
     results_content = jsonify([label_dict], [probability_dict])
 
     print(results_content)
