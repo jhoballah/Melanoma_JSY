@@ -32,7 +32,7 @@ def image_send():
         image_out.write(base64.b64decode(buf))
 
     #read in temp.jpg using matplotlib.image's imread to give us the correct numpy.ndarray to pass into get_prediction
-    image=imread(temp.jpg)
+    image = mpimg.imread(temp.jpg)
 
     (label, prediction) = get_prediction(image)
 
