@@ -44,16 +44,17 @@ def image_send():
     # msg = msg[msg.find(b"<plain_txt_msg:img>") + len(b"<plain_txt_msg:img>"):
     # msg.find(b"<!plain_txt_msg>")]
     msg = base64.b64decode(image_b64_data[0])
-    #buf = io.BytesIO(msg)
+    buf = io.BytesIO(msg)
     #img = np.asarray(Image.open(buf).convert('L'))
     #image = []
     #img1 = img[np.newaxis,:,:]
     #image.append[img1]
     # return img
-    image = np.array(Image.open(msg))
+    image = np.array(Image.open(buf))
+    im_data = im_data.reshape((im_data.shape[0], im_data.shape[1], im_data.shape[2], 1))
     #image = np.array(image)
 
-    (label, prediction) = get_prediction(image)
+    (label, prediction) = get_prediction(im_data)
 
     label_dict = {"diagnosis": label.tolist()}
     probability_dict = {"likelihood": prediction.tolist()} 
