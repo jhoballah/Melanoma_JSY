@@ -64,10 +64,12 @@ def image_send():
     #image = np.array(image)
 
 
-    prediction = get_prediction(im_data)
-    prediction = [prediction[0], np.ndarray.tolist(prediction[1])]
-    prediction_dict = {'prediction': prediction}
-    results_content = jsonify(prediction_dict) 
+    (labels, predictions) = get_prediction(im_data)
+    label_dict = {"labels": labels}
+    prediction_dict = {"prediction": np.float64(predictions).tolist()}
+    #prediction = [prediction[0], np.ndarray.tolist(prediction[1])]
+    #prediction_dict = {'prediction': prediction}
+    results_content = jsonify([label_dict, prediction_dict]) 
 
     print(results_content)
 
