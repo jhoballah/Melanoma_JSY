@@ -37,21 +37,21 @@ def melanoma_results():
         return send_error("Input is not JSON dictionary", 600)
 
     # decode base64 back to image
-
     image_b64_data = j_dict['im64']
-    msg = base64.b64decode(image_b64_data[0])
+    data = image_b64_data[0]
+    msg = base64.b64decode(data)
     buf = io.BytesIO(msg)
     img = np.array(Image.open(buf))
 
     # TensorFlow - Get_Prediction fxn
+    (labels, predictions) = get_prediction(im_data)
+    label_dict = {"labels": labels}
+    prediction_dict = {"prediction": np.float64(predictions).tolist()}
+    results_content = jsonify([label_dict, prediction_dict])
 
-    (labels, predictions) = get_prediction(img)
+    return results_content
 
-    label_dict = {"diagnosis": labels.tolist()}
-    probability_dict = {"likelihood": predictions.tolist()}
-
-    results_content = jsonify([label_dict], [probability_dict])
-
+    # Populate MongoDB with results
     # if predictions[0]>predictions[1]:
     #   flag = 1
     #else:
@@ -62,6 +62,7 @@ def melanoma_results():
     # malignant_flag = flag)
     # new_p.save()
 
-    return results_content
 
+if __name__=="__main__":
+    app.run(port=5900, host="0.0.0.0")
 
