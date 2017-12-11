@@ -2,17 +2,16 @@ import numpy as np
 import json
 import tensorflow as tf
 import base64
+import io
 from pymodm import connect
 from pymodm import MongoModel, fields
-#suyash's code:
-from bme590_melanoma_detection.get_prediction import get_prediction
+from get_prediction import get_prediction
+from flask import Flask, request, jsonify
 
 patient_counter = 0
 
-from flask import Flask, request, jsonify
-#connect("mongodb://vcm-1856.vm.duke.edu:5900/melanoma_db")
+# connect("mongodb://vcm-1856.vm.duke.edu:5900/melanoma_db")
 app = Flask(__name__)
-
 
 # class User(MongoModel):
 #     patient_id = fields.Integer()
@@ -20,10 +19,11 @@ app = Flask(__name__)
 #     p_benign = fields.FloatField()
 #     malignant_flag = fields.Integer() ....flag ==1 if p_mal > p_ben
 
+
 @app.route("/CloudMelanomaData", methods=['POST'])
 def melanoma_results():
     """
-    #sphinx
+    sphinx
     """
     # initialize array for image data, convert back from base64
 
@@ -36,9 +36,14 @@ def melanoma_results():
     except ValueError:
         return send_error("Input is not JSON dictionary", 600)
 
-    image_b64_data = np.array(j_dict['im64'])
+    # decode base64 back to image
 
-    img = base64.b64decode(image_b64_data)
+    image_b64_data = j_dict['im64']
+    msg = base64.b64decode(image_b64_data[0])
+    buf = io.BytesIO(msg)
+    img = np.array(Image.open(buf))
+
+    # TensorFlow - Get_Prediction fxn
 
     (labels, predictions) = get_prediction(img)
 
