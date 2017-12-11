@@ -5,6 +5,9 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 const CardResults = (props) => (
 
     <Card>
+    
+    <CardHeader/>
+
         
     <CardMedia
         overlay={<CardTitle title="Uploaded Image" />}

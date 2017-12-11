@@ -45,7 +45,7 @@ class Upload extends Component {
 				style={{height: undefined, width:undefined}}
 				src={this.state.currentImageString} 
 				resizeMode="contain"
-				alt="Your Image Will Be Rendered Below!" 
+				alt="" 
 				align="center"
 			/>
 		</center>
