@@ -1,5 +1,5 @@
 # Set the base image
-FROM gcr.io/tensorflow/tensorflow:latest
+FROM gcr.io/tensorflow/tensorflow:latest-py3
 
 # Dockerfile author / maintainer 
 MAINTAINER Sonali Shah <ss842@duke.edu> 
