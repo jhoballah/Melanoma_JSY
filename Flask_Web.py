@@ -8,6 +8,7 @@ import io
 from get_prediction import get_prediction
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from PIL import Image 
 
 patient_counter = 0
 
