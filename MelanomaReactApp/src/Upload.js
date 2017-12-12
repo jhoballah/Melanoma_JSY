@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { UploadField } from '@navjobs/upload';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 
 
@@ -8,6 +9,7 @@ class Upload extends Component {
         super();
 	this.state = {
 	    currentImageString: ''
+
     }
 }
     onUpload = (files) => { 
@@ -17,8 +19,9 @@ class Upload extends Component {
 	reader.onloadend = () => {
 	      
 	    console.log(reader.result);
-    	    this.setState({currentImageString: reader.result});	
-    	    this.props.onupload(reader.result)
+    	    this.setState({currentImageString: reader.result.substr(reader.result.indexOf(',') + 1)});	
+    	    
+    	    this.props.onupload(reader.result.substr(reader.result.indexOf(',') + 1));
         }
     }
 

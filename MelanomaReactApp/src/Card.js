@@ -17,7 +17,7 @@ const CardResults = (props) => (
         title="View Your Diagnosis After Uploading" 
         subtitle="Your Classification Can Be Seen Below" />
     <CardText>
-        {(props.sites !== undefined) ? props.sites : "To view your classification results, you must upload an image."}
+        {(props.sites !== undefined) ? props.results : "To view your classification results, you must upload an image."}
     </CardText>
     
   </Card>

@@ -11,6 +11,7 @@ class App extends Component {
 
 state = {
 	'sites': '',
+	'classification':''
     }
 
     getData = () => {
@@ -21,9 +22,23 @@ state = {
             console.log(data.data)
             this.setState({'sites': data.data});
             
-             
+        
         });
-    } 
+
+        axios({
+			method: 'post',
+			url: 'http://vcm-1856.vm.duke.edu:5900/WebAppMelanomaData',
+			data: {
+			image: this.state.imagestring
+			}
+		})
+        .then( (results) =>{
+        	console.log(results);
+        	console.log("The classification results");
+        	console.log(results.data)
+        	this.setState({'classification': results.data})
+        })
+    };
 
 state = {imagestring: ""}
 onimageupload = (imagestring) => {
@@ -45,12 +60,15 @@ onimageupload = (imagestring) => {
 				/>
 				<Upload onupload = {this.onimageupload} />
 				
-				<Card image = {this.state.imagestring} sites = {this.state.sites}/>
+				<Card 
+					image = {this.state.imagestring} 
+					sites = {this.state.sites} 
+					classification = {this.state.results}/>
 	  			
 			</MuiThemeProvider>
       </div>
       
-      
+
     );
   }
 }
