@@ -6,19 +6,18 @@ const CardResults = (props) => (
 
     <Card>
     
-    <CardHeader/>
-
+    
         
     <CardMedia
-        overlay={<CardTitle title="Uploaded Image" />}
+        
     >
         <img src={props.image} alt="" />
     </CardMedia>
     <CardTitle 
-        title="Diagnosis Results" 
+        title="View Your Diagnosis After Uploading" 
         subtitle="Your Classification Can Be Seen Below" />
     <CardText>
-        
+        {(props.sites !== undefined) ? props.sites : "To view your classification results, you must upload an image."}
     </CardText>
     
   </Card>

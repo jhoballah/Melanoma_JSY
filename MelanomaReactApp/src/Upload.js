@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { UploadField } from '@navjobs/upload';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 
 
@@ -8,7 +7,7 @@ class Upload extends Component {
     constructor() {
         super();
 	this.state = {
-	    currentImageString: '',
+	    currentImageString: ''
     }
 }
     onUpload = (files) => { 
@@ -40,15 +39,7 @@ class Upload extends Component {
 					Click This Box Or Drag Your Image To Upload
 		    		</div>
 	         	</UploadField>
-	    <center>		
-			<img
-				style={{height: undefined, width:undefined}}
-				src={this.state.currentImageString} 
-				resizeMode="contain"
-				alt="" 
-				align="center"
-			/>
-		</center>
+	    
 	    </div>
         )
     }
