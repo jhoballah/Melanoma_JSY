@@ -3,15 +3,18 @@ import json
 import tensorflow as tf
 import base64
 import io
-from pymodm import connect
-from pymodm import MongoModel, fields
+#from pymodm import connect
+#from pymodm import MongoModel, fields
 from get_prediction import get_prediction
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 patient_counter = 0
 
 # connect("mongodb://vcm-1856.vm.duke.edu:5900/melanoma_db")
 app = Flask(__name__)
+CORS(app)
+#cors = CORS(app, resources={r"/api/*":{"origins": "*"}})
 
 # class User(MongoModel):
 #     patient_id = fields.Integer()
