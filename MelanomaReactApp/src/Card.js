@@ -1,6 +1,13 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
 const CardResults = (props) => (
 
@@ -15,9 +22,9 @@ const CardResults = (props) => (
     </CardMedia>
     <CardTitle 
         title="View Your Diagnosis After Uploading" 
-        subtitle="Your Classification Can Be Seen Below" />
+        subtitle="Upload an image to see your classification results!" />
     <CardText>
-        {(props.sites !== undefined) ? props.results : "To view your classification results, you must upload an image."}
+        
     </CardText>
     
   </Card>

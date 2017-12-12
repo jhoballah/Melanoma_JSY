@@ -6,6 +6,7 @@ import AppBar from 'material-ui/AppBar';
 import Upload from './Upload';
 import Card from './Card';
 import axios from 'axios';
+import Table from './Table'
 
 class App extends Component {
 
@@ -29,7 +30,7 @@ state = {
 			method: 'post',
 			url: 'http://vcm-1856.vm.duke.edu:5900/WebAppMelanomaData',
 			data: {
-			image: this.state.imagestring
+			image: [this.state.headerlessimage]
 			}
 		})
         .then( (results) =>{
@@ -43,10 +44,17 @@ state = {
 state = {imagestring: ""}
 onimageupload = (imagestring) => {
 	this.setState({imagestring : imagestring})
-	if (this.state.imagestring !== undefined) {
+	
+}
+state = {headerlessimage: ""}
+onheaderlessupload = (headerlessimage) => {
+	this.setState({headerlessimage : headerlessimage})
+	if (this.state.headerlessimage !== undefined) {
 		this.getData()
 
 	}
+
+	
 }	
   render() {
     return (
@@ -58,13 +66,17 @@ onimageupload = (imagestring) => {
 				align ="center"
 				showMenuIconButton={false}
 				/>
-				<Upload onupload = {this.onimageupload} />
+				<Upload 
+				onupload = {this.onimageupload}
+				headerlessupload = {this.onheaderlessupload} />
 				
 				<Card 
 					image = {this.state.imagestring} 
 					sites = {this.state.sites} 
-					classification = {this.state.results}/>
-	  			
+					classification = {this.state.classification}/>
+
+				<Table  displayRowCheckbox = {false} classification = {this.state.classification}  />
+	  				
 			</MuiThemeProvider>
       </div>
       

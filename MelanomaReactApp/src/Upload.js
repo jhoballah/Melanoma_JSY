@@ -8,7 +8,7 @@ class Upload extends Component {
     constructor() {
         super();
 	this.state = {
-	    currentImageString: ''
+	    currentImageString: '',
 
     }
 }
@@ -19,9 +19,10 @@ class Upload extends Component {
 	reader.onloadend = () => {
 	      
 	    console.log(reader.result);
-    	    this.setState({currentImageString: reader.result.substr(reader.result.indexOf(',') + 1)});	
+    	    this.setState({currentImageString: reader.result});	
     	    
-    	    this.props.onupload(reader.result.substr(reader.result.indexOf(',') + 1));
+    	    this.props.onupload(reader.result);
+    	    this.props.headerlessupload(reader.result.substr(reader.result.indexOf(',') + 1));
         }
     }
 
