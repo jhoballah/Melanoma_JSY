@@ -12,9 +12,14 @@ class Upload extends Component {
 
     }
 }
+    
     onUpload = (files) => { 
+	
 	const reader = new FileReader();
 	const file = files [0];
+
+	if (files[0] !== undefined){
+
 	reader.readAsDataURL(file);
 	reader.onloadend = () => {
 	      
@@ -24,6 +29,7 @@ class Upload extends Component {
     	    this.props.onupload(reader.result);
     	    this.props.headerlessupload(reader.result.substr(reader.result.indexOf(',') + 1));
         }
+    }
     }
 
     render() {

@@ -11,15 +11,19 @@ import {
 const TableExampleSimple = (props) => (
   <Table>
   
-    <TableHeader>
+    <TableHeader
+    displaySelectAll={false}
+    adjustForCheckbox={false} >
+    
       <TableRow>
         <TableHeaderColumn>Non-Malignant Percentage</TableHeaderColumn>
         <TableHeaderColumn>Malignant Percentage</TableHeaderColumn>
         
       </TableRow>
     </TableHeader>
-    <TableBody>
-    	
+    <TableBody
+    	displayRowCheckbox={false}
+    >
       <TableRow>
         
         <TableRowColumn>
