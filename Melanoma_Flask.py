@@ -2,6 +2,7 @@ import numpy as np
 import json
 import base64
 import io
+from flask_cors import CORS
 #from pymodm import connect
 #from pymodm import MongoModel, fields
 from PIL import Image
@@ -13,6 +14,7 @@ patient_counter = 0
 
 # connect("mongodb://vcm-1856.vm.duke.edu:5900/melanoma_db")
 app = Flask(__name__)
+CORS(app)
 
 # class User(MongoModel):
 #     patient_id = fields.Integer()
@@ -44,7 +46,7 @@ def melanoma_results():
         data_key = "image" + str(c)
         data = j_dict[data_key]
         print(data)
-        msg = base64.b64decode(data[0])
+        msg = base64.b64decode(data[0]).decode('utf-8')
         buf = io.BytesIO(msg)
         img = np.array(Image.open(buf))
         (labels, predictions) = get_prediction(img)
