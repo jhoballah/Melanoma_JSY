@@ -1,10 +1,11 @@
 import numpy as np
 import json
-import tensorflow as tf
 import base64
 import io
-from pymodm import connect
-from pymodm import MongoModel, fields
+#from pymodm import connect
+#from pymodm import MongoModel, fields
+from PIL import Image
+import tensorflow as tf
 from get_prediction import get_prediction
 from flask import Flask, request, jsonify
 
@@ -42,7 +43,8 @@ def melanoma_results():
         # decode base64 back to image
         data_key = "image" + str(c)
         data = j_dict[data_key]
-        msg = base64.b64decode(data)
+        print(data)
+        msg = base64.b64decode(data[0])
         buf = io.BytesIO(msg)
         img = np.array(Image.open(buf))
         (labels, predictions) = get_prediction(img)
