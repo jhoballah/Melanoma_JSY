@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
@@ -9,11 +8,9 @@ import axios from 'axios';
 import Table from './Table'
 
 class App extends Component {
-
 state = {
 	'classification':''
     }
-
     getClassification = () => {
 
         axios({
@@ -30,13 +27,11 @@ state = {
         	this.setState({'classification': results.data})
         })
     };
-
 state = {imagestring: ""}
 onimageupload = (imagestring) => {
 	this.setState({imagestring : imagestring})
 	
 }
-
 state = {headerlessimage: ""}
 onheaderlessupload = (headerlessimage) => {
 	this.setState({headerlessimage : headerlessimage})
@@ -71,9 +66,7 @@ onheaderlessupload = (headerlessimage) => {
 				<Table classification = {this.state.classification}  />
 	  				
 			</MuiThemeProvider>
-      </div>
-      
-
+      </div>      
     );
   }
 }

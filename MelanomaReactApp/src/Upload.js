@@ -17,9 +17,7 @@ class Upload extends Component {
 		        }
 		    }
     }
-
     render() {
-	
         return (
              <div>
 	     	 	<h2 align="center" > Upload Your .JPG Image Below</h2>      	 	
@@ -36,4 +34,5 @@ class Upload extends Component {
         )
     }
 }
+
 export default Upload;

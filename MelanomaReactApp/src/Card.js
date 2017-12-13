@@ -1,11 +1,8 @@
 import React from 'react';
 import {Card, CardMedia, CardTitle} from 'material-ui/Card';
 
-
 const CardResults = (props) => (
-
     <Card>
-
         <CardMedia>
             <img src={props.image} alt="" />
         </CardMedia>
