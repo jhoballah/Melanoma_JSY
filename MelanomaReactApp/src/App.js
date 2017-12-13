@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
@@ -11,20 +11,10 @@ import Table from './Table'
 class App extends Component {
 
 state = {
-	'sites': '',
 	'classification':''
     }
 
-    getData = () => {
-    	
-        axios.get('http://adpl.suyash.io/api/sites').then( (data) => {
-            console.log(data);
-            console.log("The sites data is");
-            console.log(data.data)
-            this.setState({'sites': data.data});
-            
-        
-        });
+    getClassification = () => {
 
         axios({
 			method: 'post',
@@ -46,14 +36,13 @@ onimageupload = (imagestring) => {
 	this.setState({imagestring : imagestring})
 	
 }
+
 state = {headerlessimage: ""}
 onheaderlessupload = (headerlessimage) => {
 	this.setState({headerlessimage : headerlessimage})
 	if (this.state.headerlessimage !== undefined) {
-		this.getData()
-
+		this.getClassification()
 	}
-
 	
 }	
   render() {
@@ -61,21 +50,25 @@ onheaderlessupload = (headerlessimage) => {
       	<div>
         	<MuiThemeProvider>
 				<AppBar 
-				style= {{'width': '100%'}} 
-				title= "Melanoma Detection Web Service" 
-				align ="center"
-				showMenuIconButton={false}
+					style= {{'width': '100%'}} 
+					title= "Melanoma Detection Web Service" 
+					align ="center"
+					showMenuIconButton={false}
 				/>
+			</MuiThemeProvider>
+			<MuiThemeProvider>
 				<Upload 
-				onupload = {this.onimageupload}
-				headerlessupload = {this.onheaderlessupload} />
-				
+					onupload = {this.onimageupload}
+					headerlessupload = {this.onheaderlessupload} 
+				/>
+			</MuiThemeProvider>
+			<MuiThemeProvider>	
 				<Card 
 					image = {this.state.imagestring} 
-					sites = {this.state.sites} 
-					classification = {this.state.classification}/>
-
-				<Table  displayRowCheckbox = {false} classification = {this.state.classification}  />
+				/>
+			</MuiThemeProvider>
+			<MuiThemeProvider>
+				<Table classification = {this.state.classification}  />
 	  				
 			</MuiThemeProvider>
       </div>
