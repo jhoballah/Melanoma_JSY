@@ -27,7 +27,14 @@ CORS(app)
 @app.route("/WebAppMelanomaData", methods=['POST'])
 def melanoma_results():
     """
-    sphinx
+        Accepts JSON dictionaries from Web Client for decoding the base64 data format to
+        image data, processing the image with the get_prediction model, and returning results
+        to the web client on port 5900
+        :param: base64 data format in JSON dictionary
+        :param: jpg image file for upload (input)
+        :param: Flask App: WebAppMelanomaData
+        :param: Port 5900
+        :rtype: Diagnosis of malignancy in melanoma
     """
     # initialize array for image data, convert back from base64
 
