@@ -1,0 +1,3 @@
+[submodule "bme590_melanoma_detection"]
+	path = bme590_melanoma_detection
+	url = https://github.com/suyashkumar/bme590_melanoma_detection.git

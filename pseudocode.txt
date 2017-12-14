@@ -1,0 +1,37 @@
+#calling tensorflow through docker through VM
+#VM IP address 152.3.77.35
+
+
+# set up (image collection)
+# from raspberry pi to db? collecting from db?
+
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+from IPython.display import Image
+
+
+# training - pigmentation
+
+with tf.Session():
+	# set up variables: total, weights (to be changed repeatedly)
+	total = tf.Variable(tf.zeros([])
+	weights = tf.Variable(tf.random_uniform([])
+	
+	# initialize variables from above
+	tf.global_variables_initializer().run()
+
+
+docker compose - install on VM
+orchestrates containers, brings up containers
+
+spin out docker container
+tensorflow nastiness is in docker
+local files - edit, ex: server.py that calls the docker container
+ 
+
+docker-compose.yml
+ports: 
+	-8888:8888
+
